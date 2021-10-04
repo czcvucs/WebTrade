@@ -10,6 +10,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using WebTrade.Api.Middleware;
+using WebTrade.Application;
+using WebTrade.Infrastructure;
 
 namespace WebTrade.Api
 {
@@ -25,7 +28,13 @@ namespace WebTrade.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddApplication();
+            services.AddInfrastructure(Configuration.GetConnectionString("DefaultDb"));
             services.AddControllers();
+            services.AddSwaggerGen();
+
+            services.AddMvc(options => options.EnableEndpointRouting = false);
+            services.AddCors();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -33,9 +42,22 @@ namespace WebTrade.Api
         {
             if (env.IsDevelopment())
             {
-                app.UseDeveloperExceptionPage();
+                //app.UseDeveloperExceptionPage();
+                app.UseCors(builder => builder
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+                    .SetIsOriginAllowed(origin => true)
+                    .AllowCredentials());
             }
 
+            app.UseMiddleware<ExceptionHandlerMiddleware>();
+            app.UseMvc();
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+                c.RoutePrefix = "swagger";
+            });
             app.UseHttpsRedirection();
 
             app.UseRouting();
@@ -46,6 +68,11 @@ namespace WebTrade.Api
             {
                 endpoints.MapControllers();
             });
+
+            var serviceScopeFactory = app.ApplicationServices.GetService<IServiceScopeFactory>();
+            using var scope = serviceScopeFactory.CreateScope();
+            var context = scope.ServiceProvider.GetService<WebTradeDbContext>();
+            DataGenerator.SeedDatabase(context);
         }
     }
 }
