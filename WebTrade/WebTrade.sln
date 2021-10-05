@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29926.136
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebTrade.Api", "WebTrade.Api\WebTrade.Api.csproj", "{FEFF7833-01F9-485B-930D-5EA6CDA3CBB0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebTrade.Api", "WebTrade.Api\WebTrade.Api.csproj", "{FEFF7833-01F9-485B-930D-5EA6CDA3CBB0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebTrade.Application", "WebTrade.Application\WebTrade.Application.csproj", "{31C6158C-87AA-4889-9878-DA282BD90931}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebTrade.Application", "WebTrade.Application\WebTrade.Application.csproj", "{31C6158C-87AA-4889-9878-DA282BD90931}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebTrade.Domain", "WebTrade.Domain\WebTrade.Domain.csproj", "{1BC4DA2C-850F-4853-AF9E-3E516ACE0D92}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebTrade.Domain", "WebTrade.Domain\WebTrade.Domain.csproj", "{1BC4DA2C-850F-4853-AF9E-3E516ACE0D92}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebTrade.Infrastructure", "WebTrade.Infrastructure\WebTrade.Infrastructure.csproj", "{A3A5C90B-D5D9-4D21-AC22-287D46457F4B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebTrade.Infrastructure", "WebTrade.Infrastructure\WebTrade.Infrastructure.csproj", "{A3A5C90B-D5D9-4D21-AC22-287D46457F4B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebTrade.Api.Tests", "WebTrade.Api.Tests\WebTrade.Api.Tests.csproj", "{B00EDB2B-A096-446D-8288-3410B4C1BC36}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{A3A5C90B-D5D9-4D21-AC22-287D46457F4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A3A5C90B-D5D9-4D21-AC22-287D46457F4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A3A5C90B-D5D9-4D21-AC22-287D46457F4B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B00EDB2B-A096-446D-8288-3410B4C1BC36}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B00EDB2B-A096-446D-8288-3410B4C1BC36}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B00EDB2B-A096-446D-8288-3410B4C1BC36}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B00EDB2B-A096-446D-8288-3410B4C1BC36}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

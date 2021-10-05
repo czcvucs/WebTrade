@@ -23,7 +23,7 @@ namespace WebTrade.Api.Controllers
 		[Route("UpdateMarket")]
 		[ProducesResponseType(StatusCodes.Status200OK)]
 		[ProducesResponseType(StatusCodes.Status400BadRequest)]
-		public async Task<ActionResult> AddTrade([FromBody] UpdateMarketCommand command)
+		public async Task<ActionResult> UpdateMarket([FromBody] UpdateMarketCommand command)
 		{
 			return Ok(await Mediator.Send(command));
 		}

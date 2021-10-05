@@ -10,9 +10,6 @@ namespace WebTrade.Api.Controllers
 	[Route("api/[controller]")]
 	public class BuyerController : ApiController
 	{
-		/// <summary>
-		/// The name of the product
-		/// </summary>
 		[HttpGet]
 		[Route("GetBuyers")]
 		[ProducesResponseType(StatusCodes.Status200OK)]

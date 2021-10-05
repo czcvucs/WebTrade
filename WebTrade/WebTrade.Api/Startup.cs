@@ -35,7 +35,6 @@ namespace WebTrade.Api
         {
             if (env.IsDevelopment())
             {
-                //app.UseDeveloperExceptionPage();
                 app.UseCors(builder => builder
                     .AllowAnyMethod()
                     .AllowAnyHeader()
@@ -48,7 +47,7 @@ namespace WebTrade.Api
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "WebTrade API");
                 c.RoutePrefix = "swagger";
             });
             app.UseHttpsRedirection();

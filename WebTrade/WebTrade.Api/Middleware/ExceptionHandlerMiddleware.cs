@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
 using System;
 using System.Net;
 using System.Threading.Tasks;
@@ -46,12 +45,7 @@ namespace WebTrade.Api.Middleware
                 Error = exception.Message
             };
 
-            var serializerSettings = new JsonSerializerSettings
-            {
-                ContractResolver = new CamelCasePropertyNamesContractResolver()
-            };
-
-            var jsonError = JsonConvert.SerializeObject(errorResponse, serializerSettings);
+            var jsonError = JsonConvert.SerializeObject(errorResponse);
 
             await context.Response.WriteAsync(jsonError);
         }
