@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using WebTrade.Domain.Models;
 
 namespace WebTrade.Infrastructure
@@ -16,6 +14,12 @@ namespace WebTrade.Infrastructure
 				{
 					Id = Guid.NewGuid(),
 					Name = "John",
+				};
+
+				var testBuyer2 = new Buyer
+				{
+					Id = Guid.NewGuid(),
+					Name = "Alice",
 				};
 
 				var testMarket1 = new Market
@@ -52,9 +56,19 @@ namespace WebTrade.Infrastructure
 					BuyerId = testBuyer1.Id
 				};
 
-				context.Buyers.AddRange(testBuyer1);
+				var testTrade3 = new Trade
+				{
+					Id = Guid.NewGuid(),
+					MarketId = testMarket2.Id,
+					TradePrice = testMarket2.MarketPrice,
+					TradeQuantity = 4,
+					TradeDate = DateTime.Now.AddDays(-50),
+					BuyerId = testBuyer2.Id
+				};
+
+				context.Buyers.AddRange(testBuyer1, testBuyer2);
 				context.Markets.AddRange(testMarket1, testMarket2);
-				context.Trades.AddRange(testTrade1, testTrade2);
+				context.Trades.AddRange(testTrade1, testTrade2, testTrade3);
 				context.SaveChanges();
 			}
 		}

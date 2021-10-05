@@ -27,5 +27,11 @@ namespace WebTrade.Infrastructure.Repositories
         {
             return await _webTradeDbContext.Markets.Where(m => m.Id == marketId).FirstOrDefaultAsync(cancellationToken);
         }
+
+        public async Task UpdateMarketPrice(Market market, double newMarketPrice, CancellationToken cancellationToken)
+        {
+            market.MarketPrice = newMarketPrice;
+            await _webTradeDbContext.SaveChangesAsync();
+        }
     }
 }

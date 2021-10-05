@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using WebTrade.Application.Trades;
 using WebTrade.Application.Trades.AddTrade;
@@ -15,7 +16,7 @@ namespace WebTrade.Api.Controllers
 		[HttpGet]
 		[Route("GetTrades")]
 		[ProducesResponseType(StatusCodes.Status200OK)]
-		public async Task<ActionResult<TradeDto>> GetTrades()
+		public async Task<ActionResult<IEnumerable<TradeDto>>> GetTrades()
 		{
 			return Ok(await Mediator.Send(new GetTradesQuery()));
 		}

@@ -1,7 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Threading;
-using System.Threading.Tasks;
 using WebTrade.Domain.Models;
 
 namespace WebTrade.Infrastructure

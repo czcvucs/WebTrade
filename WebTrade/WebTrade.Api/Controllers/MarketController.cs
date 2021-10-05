@@ -1,8 +1,10 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using WebTrade.Application.Market;
 using WebTrade.Application.Market.GetMarkets;
+using WebTrade.Application.Market.UpdateMarket;
 
 namespace WebTrade.Api.Controllers
 {
@@ -12,9 +14,18 @@ namespace WebTrade.Api.Controllers
 		[HttpGet]
 		[Route("GetMarkets")]
 		[ProducesResponseType(StatusCodes.Status200OK)]
-		public async Task<ActionResult<MarketDto>> GetMarkets()
+		public async Task<ActionResult<IEnumerable<MarketDto>>> GetMarkets()
 		{
 			return Ok(await Mediator.Send(new GetMarketsQuery()));
+		}
+
+		[HttpPut]
+		[Route("UpdateMarket")]
+		[ProducesResponseType(StatusCodes.Status200OK)]
+		[ProducesResponseType(StatusCodes.Status400BadRequest)]
+		public async Task<ActionResult> AddTrade([FromBody] UpdateMarketCommand command)
+		{
+			return Ok(await Mediator.Send(command));
 		}
 	}
 }
